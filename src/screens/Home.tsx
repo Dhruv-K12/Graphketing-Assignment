@@ -22,15 +22,17 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <SearchInput value={searchVal} onChangeText={searchHandler} />
-      <FlatList
-        ListEmptyComponent={EmptyState}
-        data={data}
-        renderItem={({ item }) => <UserCard data={item} />}
-        keyExtractor={(item: userList) => item?.id?.toString()}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      />
+      <View style={{ flex: 1 }}>
+        <FlatList
+          ListEmptyComponent={EmptyState}
+          data={data}
+          renderItem={({ item }) => <UserCard data={item} />}
+          keyExtractor={(item: userList) => item?.id?.toString()}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        />
+      </View>
     </SafeAreaView>
   );
 };
