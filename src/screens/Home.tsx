@@ -2,11 +2,13 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchInput from "../components/SearchInput";
+import UserCard from "../components/UserCard";
 
 const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <SearchInput />
+      <UserCard />
     </SafeAreaView>
   );
 };
@@ -18,5 +20,6 @@ const styles = StyleSheet.create({
     padding: 24,
     flex: 1,
     backgroundColor: "white",
+    gap: 16,
   },
 });
