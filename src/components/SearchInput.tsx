@@ -3,11 +3,17 @@ import React from "react";
 import { Fontisto } from "@expo/vector-icons";
 import { COLORS } from "../const/theme";
 
-const SearchInput = () => {
+type props = {
+  value: string;
+  onChangeText: (text: string) => void;
+};
+const SearchInput = ({ value, onChangeText }: props) => {
   return (
     <View style={styles.container}>
       <Fontisto name="search" size={24} color={COLORS.secondaryColor} />
       <TextInput
+        value={value}
+        onChangeText={onChangeText}
         placeholder="Search"
         style={styles.input}
         placeholderTextColor={COLORS.secondaryColor}

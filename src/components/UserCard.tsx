@@ -7,13 +7,24 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { COLORS } from "../const/theme";
+import { userList } from "../types";
+import { useNavigation } from "@react-navigation/native";
+import { routeStackParamList } from "../navigation/StackNavigator";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-const UserCard = () => {
+type props = {
+  data: userList;
+};
+type navigationType = NativeStackNavigationProp<routeStackParamList, "Home">;
+
+const UserCard = ({ data }: props) => {
+  const navigation = useNavigation<navigationType>();
+  const navigateToDetail = () => navigation.navigate("Detail", { data });
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={navigateToDetail} style={styles.container}>
       <View style={styles.section}>
         <Feather name="user" size={18} color={COLORS.secondaryColor} />
-        <Text>Dhruv Kumar</Text>
+        <Text>{data?.name}</Text>
       </View>
       <View style={styles.section}>
         <MaterialCommunityIcons
@@ -21,11 +32,11 @@ const UserCard = () => {
           size={18}
           color={COLORS.secondaryColor}
         />
-        <Text>Dhruvkumar1129@gmail.com</Text>
+        <Text>{data?.email}</Text>
       </View>
       <View style={styles.section}>
         <Feather name="phone" size={18} color={COLORS.secondaryColor} />
-        <Text>+91 9599344915</Text>
+        <Text>{data.phone}</Text>
       </View>
       <View style={styles.section}>
         <MaterialIcons
@@ -33,7 +44,7 @@ const UserCard = () => {
           size={18}
           color={COLORS.secondaryColor}
         />
-        <Text>Google</Text>
+        <Text>{data?.company?.name}</Text>
       </View>
       <View style={styles.navigateBtn}>
         <Ionicons
@@ -57,6 +68,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.4,
     elevation: 3,
     backgroundColor: COLORS.backgroundColor,
+    marginBottom: 12,
   },
   section: {
     flexDirection: "row",
