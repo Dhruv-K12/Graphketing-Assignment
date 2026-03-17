@@ -10,6 +10,7 @@ const useHome = () => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = () => {
     setRefreshing(true);
+
     fetchUserListHandler();
     setRefreshing(false);
   };

@@ -5,7 +5,7 @@ import { COLORS } from "../const/theme";
 const Loading = () => {
   return (
     <View style={styles.container}>
-      <ActivityIndicator color={COLORS.color} size={32} />
+      <ActivityIndicator color={COLORS.color} size={48} />
     </View>
   );
 };
